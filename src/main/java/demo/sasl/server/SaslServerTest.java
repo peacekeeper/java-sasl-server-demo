@@ -6,14 +6,12 @@ import org.apache.logging.log4j.Logger;
 import javax.security.sasl.Sasl;
 import javax.security.sasl.SaslException;
 import javax.security.sasl.SaslServer;
-import javax.security.sasl.SaslServerFactory;
-import java.util.Collections;
 import java.util.Map;
 
 public class SaslServerTest {
 
     private static final String MECHANISM = "CRAM-MD5";
-    private static final String PROTOCOL = "myproto";
+    private static final String PROTOCOL = "xmpp";
     private static final String SERVER_NAME = "localhost";
     private static final Map<String, Object> PROPS = null;
 
@@ -25,14 +23,6 @@ public class SaslServerTest {
 
     public void run() throws SaslException {
         SaslServer saslServer = createSaslServer();
-    }
-
-    public static void logSaslServerFactoriesAndMechanisms() {
-        for (SaslServerFactory saslServerFactory : Collections.list(Sasl.getSaslServerFactories())) {
-            for (String mechanismName : saslServerFactory.getMechanismNames(null)) {
-                log.info("For SASL server factory {} found mechanism name {}", saslServerFactory, mechanismName);
-            }
-        }
     }
 
     public static SaslServer createSaslServer() throws SaslException {

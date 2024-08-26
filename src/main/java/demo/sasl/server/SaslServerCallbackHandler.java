@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Logger;
 
 import javax.security.auth.callback.*;
 import javax.security.sasl.AuthorizeCallback;
-import javax.security.sasl.RealmCallback;
 import java.io.IOException;
 
 public class SaslServerCallbackHandler implements CallbackHandler {
@@ -17,19 +16,16 @@ public class SaslServerCallbackHandler implements CallbackHandler {
         for (Callback cb : callbacks) {
             log.debug("Callback: {}", cb);
             switch (cb) {
-                case AuthorizeCallback ac:
-                    ac.setAuthorized(true);
-                    break;
                 case NameCallback nc:
-                    log.info("name: {}", nc.getDefaultName());
-                    nc.setName(nc.getDefaultName());
+                    log.info("prompt: {}, name: {}, defaultName: {}", nc.getPrompt(), nc.getName(), nc.getDefaultName());
                     break;
                 case PasswordCallback pc:
-                    log.info("password: {}", pc.getPassword());
+                    log.info("prompt: {}, password: {}", pc.getPrompt(), pc.getPassword());
                     pc.setPassword("password".toCharArray());
                     break;
-                case RealmCallback rc:
-                    log.info("realm: {}", rc.getText());
+                case AuthorizeCallback ac:
+                    log.info("authenticationID: {}, authorizationID: {}, authorizedID: {}, isAuthorized: {}", ac.getAuthenticationID(), ac.getAuthorizationID(), ac.getAuthorizedID(), ac.isAuthorized());
+                    ac.setAuthorized(true);
                     break;
                 default: throw new UnsupportedCallbackException(cb);
             }
