@@ -1,18 +1,14 @@
-package demo.sasl.server.did;
+package demo.sasl.server;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.security.auth.callback.Callback;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.callback.NameCallback;
-import javax.security.auth.callback.UnsupportedCallbackException;
+import javax.security.auth.callback.*;
 import javax.security.sasl.AuthorizeCallback;
-import java.io.IOException;
 
-public class DidSaslServerCallbackHandler implements CallbackHandler {
+public class SimpleSaslServerCallbackHandler implements CallbackHandler {
 
-    private static final Logger log = LogManager.getLogger(DidSaslServerCallbackHandler.class);
+    private static final Logger log = LogManager.getLogger(SimpleSaslServerCallbackHandler.class);
 
     @Override
     public void handle(Callback[] callbacks) throws UnsupportedCallbackException {
@@ -20,6 +16,9 @@ public class DidSaslServerCallbackHandler implements CallbackHandler {
             log.debug("Callback: {}", cb);
             if (cb instanceof NameCallback nc) {
                 log.info("prompt: {}, name: {}, defaultName: {}", nc.getPrompt(), nc.getName(), nc.getDefaultName());
+            } else if (cb instanceof PasswordCallback pc) {
+                log.info("prompt: {}, password: {}", pc.getPrompt(), pc.getPassword());
+                pc.setPassword("password".toCharArray());
             } else if (cb instanceof AuthorizeCallback ac) {
                 log.info("authenticationID: {}, authorizationID: {}, authorizedID: {}, isAuthorized: {}", ac.getAuthenticationID(), ac.getAuthorizationID(), ac.getAuthorizedID(), ac.isAuthorized());
                 ac.setAuthorized(true);
