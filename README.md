@@ -12,7 +12,10 @@ on the server side. It shows the use of two SASL authentication mechanisms:
 - The DID-based `DID-CHALLENGE` mechanism, described and implemented in https://github.com/peacekeeper/java-sasl-did-mechanism.
 
 In both cases, an implementation of a callback handler is also provided, to simulate the interaction between SASL and
-a host protocol.
+a host protocol:
+
+- [SimpleSaslServerCallbackHandler.java](https://github.com/peacekeeper/java-sasl-server-demo/blob/main/src/main/java/demo/sasl/server/SimpleSaslServerCallbackHandler.java)
+- [DidSaslServerCallbackHandler.java](https://github.com/peacekeeper/java-sasl-server-demo/blob/main/src/main/java/demo/sasl/server/did/DidSaslServerCallbackHandler.java)
 
 This component is used as the server side in the SASL local "Hello World" demonstration,
 see https://github.com/peacekeeper/java-sasl-local-demo.
