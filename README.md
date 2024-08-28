@@ -6,7 +6,7 @@ see https://github.com/peacekeeper/did-based-sasl for an overview and list of al
 ## Description
 
 This repository contains demonstration components to illustrate the use of the [Simple Authentication and Security Layer (SASL)](https://www.rfc-editor.org/rfc/rfc4422.html)
-on the server side. It shows the use of two SASL authentication mechanisms:
+on the server side. It uses the Java SASL API and shows the use of two SASL authentication mechanisms:
 
 - The more traditional `CRAM-MD5` mechanism, specified by [RFC2195](https://www.rfc-editor.org/rfc/rfc2195.html).
 - The DID-based `DID-CHALLENGE` mechanism, described and implemented in https://github.com/peacekeeper/java-sasl-did-mechanism.
