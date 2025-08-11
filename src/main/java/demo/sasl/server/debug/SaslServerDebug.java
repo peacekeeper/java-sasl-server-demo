@@ -12,9 +12,10 @@ public class SaslServerDebug {
     private static final Logger log = LogManager.getLogger(SaslServerDebug.class);
 
     public static void logSaslServerFactoriesAndMechanisms() {
+        log.debug("=== SASL server factories ===");
         for (SaslServerFactory saslServerFactory : Collections.list(Sasl.getSaslServerFactories())) {
             for (String mechanismName : saslServerFactory.getMechanismNames(null)) {
-                log.info("For SASL server factory {} found mechanism name {}", saslServerFactory, mechanismName);
+                log.debug("SASL server factory for {}: {}", mechanismName, saslServerFactory.getClass().getName());
             }
         }
     }
