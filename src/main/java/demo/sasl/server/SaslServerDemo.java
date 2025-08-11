@@ -33,6 +33,7 @@ public abstract class SaslServerDemo {
                 this.getServerName(),
                 this.getProps(),
                 new SaslServerCallbackHandler(backendIntegration));
+        if (saslServer == null) throw new UnsupportedOperationException("SASL server mechanism " + this.getMechanism() + " not supported");
         log.info("SASL server created: {}", saslServer);
         return saslServer;
     }

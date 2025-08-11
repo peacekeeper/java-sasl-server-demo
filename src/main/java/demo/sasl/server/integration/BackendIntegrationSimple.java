@@ -13,20 +13,40 @@ public class BackendIntegrationSimple implements BackendIntegration {
             "alice", "alice",
             "bob", "bob");
 
-    private static final Map<char[], char[]> PASSWORDS = Map.of();
+    private static final Map<String, char[]> PASSWORDS = Map.of(
+            "alice", "s3cr3t".toCharArray(),
+            "bob", "123456".toCharArray());
+
+    private static final String REALM = "myrealm";
 
     @Override
     public String checkName(String defaultName) {
-        String checkedName = defaultName == null ? null : USERNAMES.get(defaultName);
+        String checkedName = null;
+        if (USERNAMES.containsKey(defaultName)) checkedName = USERNAMES.get(defaultName);
         log.debug("getName({}) --> {}", defaultName, checkedName);
         return checkedName;
     }
 
     @Override
     public char[] checkPassword(char[] password) {
-        char[] checkedPassword = password == null ? null : PASSWORDS.get(password);
-        checkedPassword = "s3cr3t".toCharArray();
+        char[] checkedPassword = null;
+        /* TODO */ String username = "alice";
+        if (PASSWORDS.containsKey(username)) checkedPassword = PASSWORDS.get(username);
         log.debug("checkPassword({}) --> {}", password, checkedPassword);
         return checkedPassword;
+    }
+
+    @Override
+    public String checkTextInput(String defaultText) {
+        log.debug("checkTextInput()");
+        throw new UnsupportedOperationException("Not supported.");
+    }
+
+    @Override
+    public String checkTextInputRealm(String defaultText) {
+        String checkedText = null;
+        if (REALM.equals(defaultText)) checkedText = REALM;
+        log.debug("checkTextInputRealm({}) --> {}", defaultText, checkedText);
+        return checkedText;
     }
 }

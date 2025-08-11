@@ -21,7 +21,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.4.1</version>
                 <configuration>
-                    <mainClass>demo.sasl.server.CramMD5SaslServerDemo</mainClass>
+                    <mainClass>demo.sasl.server.SaslServerDemoCramMD5</mainClass>
                 </configuration>
             </plugin>
         </plugins>
