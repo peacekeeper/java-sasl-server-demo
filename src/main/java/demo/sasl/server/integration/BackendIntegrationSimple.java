@@ -49,4 +49,10 @@ public class BackendIntegrationSimple implements BackendIntegration {
         log.debug("checkTextInputRealm({}) --> {}", defaultText, checkedText);
         return checkedText;
     }
+
+    @Override
+    public String checkTextInputJWK(String defaultText) {
+        log.debug("checkTextInputJWK()");
+        throw new UnsupportedOperationException("Not supported.");
+    }
 }

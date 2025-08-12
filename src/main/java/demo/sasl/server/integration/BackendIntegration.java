@@ -6,4 +6,5 @@ public interface BackendIntegration {
     char[] checkPassword(char[] password);
     String checkTextInput(String defaultText);
     String checkTextInputRealm(String defaultText);
+    String checkTextInputJWK(String defaultText);
 }

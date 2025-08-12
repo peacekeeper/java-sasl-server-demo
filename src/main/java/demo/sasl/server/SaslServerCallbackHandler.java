@@ -3,6 +3,7 @@ package demo.sasl.server;
 import demo.sasl.server.integration.BackendIntegration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import sasl.mechanism.did.callback.JWKCallback;
 
 import javax.security.auth.callback.*;
 import javax.security.sasl.AuthorizeCallback;
@@ -31,6 +32,10 @@ public class SaslServerCallbackHandler implements CallbackHandler {
                 pc.setPassword(this.getBackendIntegration().checkPassword(pc.getPassword()));
                 log.info("S> {} --- password: {}, isEchoOn: {}", pc.getPrompt(), pc.getPassword(), pc.isEchoOn());
             } else if (cb instanceof RealmCallback rc) {
+                log.info(">S {} --- defaultText: {}, text: {}", rc.getPrompt(), rc.getDefaultText(), rc.getText());
+                rc.setText(this.getBackendIntegration().checkTextInputRealm(rc.getDefaultText()));
+                log.info("S> {} --- defaultText: {}, text: {}", rc.getPrompt(), rc.getDefaultText(), rc.getText());
+            } else if (cb instanceof JWKCallback rc) {
                 log.info(">S {} --- defaultText: {}, text: {}", rc.getPrompt(), rc.getDefaultText(), rc.getText());
                 rc.setText(this.getBackendIntegration().checkTextInputRealm(rc.getDefaultText()));
                 log.info("S> {} --- defaultText: {}, text: {}", rc.getPrompt(), rc.getDefaultText(), rc.getText());
