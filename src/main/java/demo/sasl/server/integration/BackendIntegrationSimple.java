@@ -17,7 +17,7 @@ public class BackendIntegrationSimple implements BackendIntegration {
             "alice", "s3cr3t".toCharArray(),
             "bob", "123456".toCharArray());
 
-    private static final String REALM = "myrealm";
+    private static final String REALM = "localhost";
 
     @Override
     public String checkName(String defaultName) {
