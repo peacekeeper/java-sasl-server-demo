@@ -1,6 +1,6 @@
 package demo.sasl.server;
 
-import demo.sasl.server.integration.BackendIntegrationSimple;
+import demo.sasl.server.integration.BackendIntegrationWithPassword;
 
 import javax.security.sasl.SaslException;
 import javax.security.sasl.SaslServer;
@@ -18,7 +18,7 @@ public class SaslServerDemoCramMD5 extends SaslServerDemo {
     }
 
     public static void main(String[] args) throws SaslException {
-        SaslServer saslServer = new SaslServerDemoCramMD5().createSaslServer(new BackendIntegrationSimple());
+        SaslServer saslServer = new SaslServerDemoCramMD5().createSaslServer(new BackendIntegrationWithPassword());
         System.out.print(saslServer);
     }
 }

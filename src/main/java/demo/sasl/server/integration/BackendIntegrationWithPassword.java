@@ -5,9 +5,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
-public class BackendIntegrationSimple implements BackendIntegration {
+public class BackendIntegrationWithPassword implements BackendIntegration {
 
-    private static final Logger log = LogManager.getLogger(BackendIntegrationSimple.class);
+    private static final Logger log = LogManager.getLogger(BackendIntegrationWithPassword.class);
 
     private static final Map<String, String> USERNAMES = Map.of(
             "alice", "alice",
@@ -23,7 +23,7 @@ public class BackendIntegrationSimple implements BackendIntegration {
     public String checkName(String defaultName) {
         String checkedName = null;
         if (USERNAMES.containsKey(defaultName)) checkedName = USERNAMES.get(defaultName);
-        log.debug("getName({}) --> {}", defaultName, checkedName);
+        log.debug("checkName({}) --> {}", defaultName, checkedName);
         return checkedName;
     }
 
