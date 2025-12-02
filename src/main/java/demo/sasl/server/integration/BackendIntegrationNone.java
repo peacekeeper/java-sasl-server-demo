@@ -3,8 +3,6 @@ package demo.sasl.server.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Map;
-
 public class BackendIntegrationNone implements BackendIntegration {
 
     private static final Logger log = LogManager.getLogger(BackendIntegrationNone.class);
