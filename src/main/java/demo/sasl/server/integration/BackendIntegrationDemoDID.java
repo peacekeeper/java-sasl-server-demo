@@ -3,9 +3,9 @@ package demo.sasl.server.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class BackendIntegrationWithDID implements BackendIntegration {
+public class BackendIntegrationDemoDID implements BackendIntegration {
 
-    private static final Logger log = LogManager.getLogger(BackendIntegrationWithDID.class);
+    private static final Logger log = LogManager.getLogger(BackendIntegrationDemoDID.class);
 
     @Override
     public String checkName(String defaultName) {

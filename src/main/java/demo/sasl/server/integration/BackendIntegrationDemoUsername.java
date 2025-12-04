@@ -5,9 +5,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
-public class BackendIntegrationWithPassword implements BackendIntegration {
+public class BackendIntegrationDemoUsername implements BackendIntegration {
 
-    private static final Logger log = LogManager.getLogger(BackendIntegrationWithPassword.class);
+    private static final Logger log = LogManager.getLogger(BackendIntegrationDemoUsername.class);
 
     private static final Map<String, String> USERNAMES = Map.of(
             "alice", "alice",

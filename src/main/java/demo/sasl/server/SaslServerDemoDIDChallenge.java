@@ -1,7 +1,6 @@
 package demo.sasl.server;
 
-import demo.sasl.server.integration.BackendIntegrationWithDID;
-import demo.sasl.server.integration.BackendIntegrationWithPassword;
+import demo.sasl.server.integration.BackendIntegrationDemoDID;
 
 import javax.security.sasl.SaslException;
 import javax.security.sasl.SaslServer;
@@ -19,7 +18,7 @@ public class SaslServerDemoDIDChallenge extends SaslServerDemo {
     }
 
     public static void main(String[] args) throws SaslException {
-        SaslServer saslServer = new SaslServerDemoDIDChallenge().createSaslServer(new BackendIntegrationWithDID());
+        SaslServer saslServer = new SaslServerDemoDIDChallenge().createSaslServer(new BackendIntegrationDemoDID());
         System.out.print(saslServer);
     }
 }
