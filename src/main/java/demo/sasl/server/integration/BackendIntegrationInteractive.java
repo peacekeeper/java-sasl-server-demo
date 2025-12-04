@@ -31,7 +31,7 @@ public class BackendIntegrationInteractive implements BackendIntegration {
 
     @Override
     public char[] checkPassword(char[] password) {
-        String checkedPassword = readLine("checkPassword " + new String(password));
+        String checkedPassword = readLine("checkPassword " + (password == null ? null : new String(password)));
         log.debug("checkPassword() --> {}", checkedPassword);
         return checkedPassword == null ? null : checkedPassword.toCharArray();
     }
