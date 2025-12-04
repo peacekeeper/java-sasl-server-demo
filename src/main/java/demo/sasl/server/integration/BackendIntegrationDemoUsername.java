@@ -14,10 +14,10 @@ public class BackendIntegrationDemoUsername implements BackendIntegration {
             "bob", "bob");
 
     private static final Map<String, char[]> PASSWORDS = Map.of(
-            "alice", "s3cr3t".toCharArray(),
-            "bob", "123456".toCharArray());
+            "alice", "alicepass".toCharArray(),
+            "bob", "bobpass".toCharArray());
 
-    private static final String REALM = "localhost";
+    private static final String REALM = "java-sasl-xmpp-server";
 
     @Override
     public String checkName(String defaultName) {
