@@ -56,4 +56,11 @@ public class BackendIntegrationInteractive implements BackendIntegration {
         log.debug("checkTextInputJWK() --> {}", checkedText);
         return checkedText;
     }
+
+    @Override
+    public String checkTextInputVCS(String defaultText) {
+        String checkedText = readLine("checkTextInputVCS " + defaultText);
+        log.debug("checkTextInputVCS() --> {}", checkedText);
+        return checkedText;
+    }
 }

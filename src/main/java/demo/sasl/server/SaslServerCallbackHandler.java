@@ -4,6 +4,7 @@ import demo.sasl.server.integration.BackendIntegration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import sasl.mechanism.did.callback.JWKCallback;
+import sasl.mechanism.did.callback.VCSCallback;
 
 import javax.security.auth.callback.*;
 import javax.security.sasl.AuthorizeCallback;
@@ -35,10 +36,14 @@ public class SaslServerCallbackHandler implements CallbackHandler {
                 log.info(">S {} --- defaultText: {}, text: {}", rc.getPrompt(), rc.getDefaultText(), rc.getText());
                 rc.setText(this.getBackendIntegration().checkTextInputRealm(rc.getDefaultText()));
                 log.info("S> {} --- defaultText: {}, text: {}", rc.getPrompt(), rc.getDefaultText(), rc.getText());
-            } else if (cb instanceof JWKCallback rc) {
-                log.info(">S {} --- defaultText: {}, text: {}", rc.getPrompt(), rc.getDefaultText(), rc.getText());
-                rc.setText(this.getBackendIntegration().checkTextInputRealm(rc.getDefaultText()));
-                log.info("S> {} --- defaultText: {}, text: {}", rc.getPrompt(), rc.getDefaultText(), rc.getText());
+            } else if (cb instanceof JWKCallback jwkc) {
+                log.info(">S {} --- defaultText: {}, text: {}", jwkc.getPrompt(), jwkc.getDefaultText(), jwkc.getText());
+                jwkc.setText(this.getBackendIntegration().checkTextInputJWK(jwkc.getDefaultText()));
+                log.info("S> {} --- defaultText: {}, text: {}", jwkc.getPrompt(), jwkc.getDefaultText(), jwkc.getText());
+            } else if (cb instanceof VCSCallback vcsc) {
+                log.info(">S {} --- defaultText: {}, text: {}", vcsc.getPrompt(), vcsc.getDefaultText(), vcsc.getText());
+                vcsc.setText(this.getBackendIntegration().checkTextInputVCS(vcsc.getDefaultText()));
+                log.info("S> {} --- defaultText: {}, text: {}", vcsc.getPrompt(), vcsc.getDefaultText(), vcsc.getText());
             } else if (cb instanceof TextInputCallback tic) {
                 log.info(">S {} --- defaultText: {}, text: {}", tic.getPrompt(), tic.getDefaultText(), tic.getText());
                 tic.setText(this.getBackendIntegration().checkTextInput(tic.getDefaultText()));

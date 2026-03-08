@@ -36,4 +36,10 @@ public class BackendIntegrationNone implements BackendIntegration {
         log.debug("checkTextInputJWK()");
         throw new UnsupportedOperationException("Not supported.");
     }
+
+    @Override
+    public String checkTextInputVCS(String defaultText) {
+        log.debug("checkTextInputVCS()");
+        throw new UnsupportedOperationException("Not supported.");
+    }
 }
